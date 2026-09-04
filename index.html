@@ -350,7 +350,7 @@
     .vid-carousel-outer { position: relative; margin-top: 2.5rem; padding: 0 52px; }
     .vid-track-clip { overflow: hidden; border-radius: 12px; }
     .vid-track { display: flex; gap: 1rem; transition: transform 0.48s cubic-bezier(0.22,1,0.36,1); will-change: transform; }
-    .vid-slide { flex: 0 0 calc(33.333% - 0.667rem); aspect-ratio: 9/16; border-radius: 12px; overflow: hidden; background: var(--ink-800); position: relative; }
+    .vid-slide { flex: 0 0 auto; aspect-ratio: 9/16; border-radius: 12px; overflow: hidden; background: var(--ink-800); position: relative; }
     .vid-slide iframe { width: 100%; height: 100%; border: none; display: block; }
     .vid-arrow-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.18); color: white; font-size: 1.7rem; cursor: pointer; display: grid; place-items: center; transition: all 0.22s; z-index: 10; padding: 0; line-height: 1; }
     .vid-arrow-btn:hover:not(:disabled) { background: var(--orange); border-color: var(--orange); }
@@ -1431,14 +1431,32 @@
   (function(){
     var vIdx = 0;
     var V_TOTAL = 12;
+
     function vPerView(){ return window.innerWidth < 768 ? 1 : 3; }
-    function vMaxIdx(){ return V_TOTAL - vPerView(); }
+    function vMaxIdx(){ return Math.max(0, V_TOTAL - vPerView()); }
+
+    function vGetSlideW(){
+      var clip = document.querySelector('.vid-track-clip');
+      if(!clip || !clip.offsetWidth) return 300;
+      var pv = vPerView();
+      var gap = 16; // 1rem gap
+      return Math.floor((clip.offsetWidth - gap * (pv - 1)) / pv);
+    }
+
+    function vSetSizes(){
+      var sw = vGetSlideW();
+      document.querySelectorAll('#vTrack .vid-slide').forEach(function(s){
+        s.style.flex = '0 0 ' + sw + 'px';
+        s.style.width = sw + 'px';
+      });
+    }
 
     function vBuildDots(){
       var dots = document.getElementById('vDots');
       if(!dots) return;
       dots.innerHTML = '';
-      for(var i = 0; i <= vMaxIdx(); i++){
+      var max = vMaxIdx();
+      for(var i = 0; i <= max; i++){
         var d = document.createElement('button');
         d.className = 'vid-dot-btn' + (i === vIdx ? ' on' : '');
         d.setAttribute('aria-label', 'Video ' + (i+1));
@@ -1447,29 +1465,18 @@
       }
     }
 
-    function vLoadNearby(idx){
-      var pv = vPerView();
-      document.querySelectorAll('#vTrack .vid-slide iframe').forEach(function(ifr, i){
-        if(i >= idx - 1 && i <= idx + pv && !ifr.src && ifr.dataset.src){
-          ifr.src = ifr.dataset.src;
-        }
-      });
-    }
-
     function vGo(idx){
       vIdx = Math.max(0, Math.min(idx, vMaxIdx()));
       var track = document.getElementById('vTrack');
       if(!track) return;
-      var slide = track.querySelector('.vid-slide');
-      if(!slide) return;
-      var gap = parseFloat(getComputedStyle(track).gap) || 16;
-      track.style.transform = 'translateX(-' + (vIdx * (slide.offsetWidth + gap)) + 'px)';
+      var sw = vGetSlideW();
+      var gap = 16;
+      track.style.transform = 'translateX(-' + (vIdx * (sw + gap)) + 'px)';
       document.querySelectorAll('.vid-dot-btn').forEach(function(d,i){ d.classList.toggle('on', i===vIdx); });
       var prev = document.getElementById('vPrev');
       var next = document.getElementById('vNext');
       if(prev) prev.disabled = vIdx === 0;
       if(next) next.disabled = vIdx >= vMaxIdx();
-      vLoadNearby(vIdx);
     }
 
     window.vMove = function(dir){ vGo(vIdx + dir); };
@@ -1485,11 +1492,21 @@
       });
     }
 
-    document.addEventListener('DOMContentLoaded', function(){
+    function vInit(){
+      vSetSizes();
       vBuildDots();
       vGo(0);
-    });
+    }
+
+    // Espera a que el layout esté listo
+    if(document.readyState === 'complete'){
+      vInit();
+    } else {
+      window.addEventListener('load', vInit);
+    }
+
     window.addEventListener('resize', function(){
+      vSetSizes();
       vBuildDots();
       vGo(Math.min(vIdx, vMaxIdx()));
     });
