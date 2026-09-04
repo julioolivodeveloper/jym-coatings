@@ -286,8 +286,11 @@
   };
   document.querySelectorAll('.dropdown-toggle').forEach(function(t){
     t.addEventListener('click', function(e){
-      if(window.innerWidth <= 900){ e.preventDefault(); t.closest('.has-dropdown').classList.toggle('drop-open'); }
+      e.preventDefault(); t.closest('.has-dropdown').classList.toggle('drop-open');
     });
+  });
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.has-dropdown')) document.querySelectorAll('.has-dropdown.drop-open').forEach(function(d){ d.classList.remove('drop-open'); });
   });
 })();
 </script>
