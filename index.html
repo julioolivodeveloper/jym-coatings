@@ -717,7 +717,7 @@
   <a href="#" class="nav-logo" aria-label="J&M Coatings">
     <img src="media/logo.webp" alt="J&M Coatings" class="brand-image" width="170" height="60" />
   </a>
-  <div class="nav-lang-mobile"><button class="lang-toggle" onclick="toggleLang()" aria-label="Cambiar idioma">English</button></div>
+  <div class="nav-lang-mobile"><button class="lang-toggle" onclick="toggleLang()" aria-label="Change language">Español</button></div>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menu">
     <span></span><span></span><span></span>
   </button>
@@ -743,7 +743,7 @@
   <li><a href="areas/"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span data-en="Areas">Áreas</span></a></li>
   <li><a href="blog/index.html"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg><span data-en="Blog">Blog</span></a></li>
   <li><a href="#contact" class="nav-cta"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="2"/><line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/></svg><span data-en="Free Estimate">Estimado Gratis</span></a></li>
-  <li><button class="lang-toggle" onclick="toggleLang()" aria-label="Cambiar idioma">English</button></li>
+  <li><button class="lang-toggle" onclick="toggleLang()" aria-label="Change language">Español</button></li>
 </ul>
 <div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
 
@@ -1393,7 +1393,7 @@
       </div>
       <div class="chat-header-info">
         <strong data-en="J&amp;M Coatings Assistant">Asistente J&M Coatings</strong>
-        <span><span class="online-dot"></span> En linea ahora</span>
+        <span><span class="online-dot"></span> <span data-en="Online now">En linea ahora</span></span>
       </div>
       <button class="chat-close" onclick="toggleChat()" aria-label="Cerrar chat">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
@@ -1403,15 +1403,15 @@
     <div class="chat-messages" id="chatMessages"></div>
 
     <div class="chat-quick-replies" id="quickReplies">
-      <button class="quick-reply" data-question-es="Que servicios ofrecen" onclick="sendQuick(this)">Servicios</button>
-      <button class="quick-reply" data-question-es="Como pido un estimado" onclick="sendQuick(this)">Estimado</button>
-      <button class="quick-reply" data-question-es="Hacen epoxy flooring" onclick="sendQuick(this)">Epoxy</button>
-      <button class="quick-reply" data-question-es="Cual es el telefono" onclick="sendQuick(this)">Telefono</button>
-      <button class="quick-reply" data-question-es="En que areas trabajan" onclick="sendQuick(this)">Areas</button>
+      <button class="quick-reply" data-question-en="What services do you offer" data-question-es="Que servicios ofrecen" onclick="sendQuick(this)"><span data-en="Services">Servicios</span></button>
+      <button class="quick-reply" data-question-en="How do I get a free estimate" data-question-es="Como pido un estimado" onclick="sendQuick(this)"><span data-en="Estimate">Estimado</span></button>
+      <button class="quick-reply" data-question-en="Do you do epoxy flooring" data-question-es="Hacen epoxy flooring" onclick="sendQuick(this)">Epoxy</button>
+      <button class="quick-reply" data-question-en="What is your phone number" data-question-es="Cual es el telefono" onclick="sendQuick(this)"><span data-en="Phone">Telefono</span></button>
+      <button class="quick-reply" data-question-en="What areas do you serve" data-question-es="En que areas trabajan" onclick="sendQuick(this)"><span data-en="Areas">Areas</span></button>
     </div>
 
     <div class="chat-input-row">
-      <input class="chat-input" id="chatInput" type="text" placeholder="Escribe tu pregunta..." data-placeholder-en="Type your question..." onkeydown="if(event.key==='Enter') sendMessage()" />
+      <input class="chat-input" id="chatInput" type="text" placeholder="Type your question..." data-placeholder-en="Type your question..." data-placeholder-es="Escribe tu pregunta..." onkeydown="if(event.key==='Enter') sendMessage()" />
       <button class="chat-send" onclick="sendMessage()" aria-label="Enviar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       </button>
@@ -1489,21 +1489,36 @@
   galleryLightboxClose.addEventListener('click',closeGalleryImage);
   document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&galleryLightbox.classList.contains('open')) closeGalleryImage(); });
 
-  const FAQ = [
-    { keywords:['servicio','servicios','ofrecen','hacen','trabajo','service','offer'], answer:'Ofrecemos: Disenos sobre concreto (nuevo y existente), Spray Deck, Stamp Overlay, Epoxy Flooring, Power Wash, Fence Stain y Wood Deck Stain. Estimados 100% gratis.' },
+  const FAQ_ES = [
+    { keywords:['servicio','servicios','ofrecen','hacen','trabajo'], answer:'Ofrecemos: Disenos sobre concreto (nuevo y existente), Spray Deck, Stamp Overlay, Epoxy Flooring, Power Wash, Fence Stain y Wood Deck Stain. Estimados 100% gratis.' },
     { keywords:['area','areas','ciudad','donde','houston','sugar land','katy','pearland','pasadena','woodlands'], answer:'Trabajamos en Houston TX y toda el area metropolitana: Sugar Land, Katy, Pearland, Pasadena, The Woodlands, Missouri City, Friendswood, Stafford, Cypress y alrededores.' },
-    { keywords:['estimado','cotizacion','precio','costo','cuanto','quote','estimate','free','gratis'], answer:'Los estimados son 100% gratis y sin compromiso. Llamanos al (832) 768-5803 o escribenos por WhatsApp con fotos de tu proyecto y te respondemos rapido.' },
-    { keywords:['epoxy','garaje','garage','piso','floor'], answer:'Si, el Epoxy Flooring es uno de nuestros servicios mas populares. Ideal para garajes, talleres y locales comerciales. Resistente, facil de limpiar y con excelente apariencia.' },
-    { keywords:['spray deck','piscina','alberca','pool'], answer:'El Spray Deck es perfecto para albercas y patios. Es antideslizante, resistente al calor y la humedad. Muy popular en Houston TX.' },
+    { keywords:['estimado','cotizacion','precio','costo','cuanto','gratis'], answer:'Los estimados son 100% gratis y sin compromiso. Llamanos al (832) 768-5803 o escribenos por WhatsApp con fotos de tu proyecto y te respondemos rapido.' },
+    { keywords:['epoxy','garaje','piso'], answer:'Si, el Epoxy Flooring es uno de nuestros servicios mas populares. Ideal para garajes, talleres y locales comerciales. Resistente, facil de limpiar y con excelente apariencia.' },
+    { keywords:['spray deck','piscina','alberca'], answer:'El Spray Deck es perfecto para albercas y patios. Es antideslizante, resistente al calor y la humedad. Muy popular en Houston TX.' },
     { keywords:['stamp','overlay','piedra','adoquin','patron'], answer:'El Stamp Overlay imita piedra, ladrillo, adoquin o madera. Es ideal para entradas, patios y areas de reunion. Totalmente personalizable.' },
     { keywords:['power wash','lavado','limpieza','presion'], answer:'Si, hacemos Power Wash profesional para driveways, patios, cercas y superficies exteriores. Tambien lo usamos como preparacion antes de aplicar cualquier recubrimiento.' },
     { keywords:['fence','cerca','madera','stain','tinte','deck'], answer:'Hacemos Fence Stain y Wood Deck Stain. Protegemos y embellecemos cercas y decks de madera contra el sol, lluvia y uso continuo en Texas.' },
-    { keywords:['telefono','llamar','numero','contacto','phone','jose','whatsapp'], answer:'Puedes llamarnos o escribir por WhatsApp al (832) 768-5803. Hablas directo con Jose Maldonado, dueno de J&M Coatings.' },
-    { keywords:['hola','buenos','buenas','hello','hi'], answer:'Hola. Soy el asistente de J&M Coatings. Puedo ayudarte con informacion sobre servicios, estimados, areas y contacto.' },
-    { keywords:['gracias','thank'], answer:'Con gusto. Para atencion directa llama al (832) 768-5803 o escribe por WhatsApp.' }
+    { keywords:['telefono','llamar','numero','contacto','jose','whatsapp'], answer:'Puedes llamarnos o escribir por WhatsApp al (832) 768-5803. Hablas directo con Jose Maldonado, dueno de J&M Coatings.' },
+    { keywords:['hola','buenos','buenas'], answer:'Hola. Soy el asistente de J&M Coatings. Puedo ayudarte con informacion sobre servicios, estimados, areas y contacto.' },
+    { keywords:['gracias'], answer:'Con gusto. Para atencion directa llama al (832) 768-5803 o escribe por WhatsApp.' }
   ];
-  const FALLBACK = 'Para esa pregunta es mejor hablar directo con Jose. Llama al (832) 768-5803 o escribe por WhatsApp y te ayudamos.';
-  const WELCOME = 'Hola. Soy el asistente de J&M Coatings.\n\nPuedo responder sobre servicios, estimados, areas y contacto. ?Que necesitas?';
+  const FAQ_EN = [
+    { keywords:['service','services','offer','work','job'], answer:'We offer: Concrete Designs (new & existing), Spray Deck, Stamp Overlay, Epoxy Flooring, Power Wash, Fence Stain and Wood Deck Stain. 100% free estimates.' },
+    { keywords:['area','areas','city','where','houston','sugar land','katy','pearland','pasadena','woodlands','serve'], answer:'We work in Houston TX and the entire metro area: Sugar Land, Katy, Pearland, Pasadena, The Woodlands, Missouri City, Friendswood, Stafford, Cypress and surroundings.' },
+    { keywords:['estimate','quote','price','cost','how much','free'], answer:'Estimates are 100% free and no commitment. Call us at (832) 768-5803 or message us on WhatsApp with photos of your project and we will respond quickly.' },
+    { keywords:['epoxy','garage','floor','flooring'], answer:'Yes, Epoxy Flooring is one of our most popular services. Ideal for garages, workshops and commercial spaces. Resistant, easy to clean and great looking.' },
+    { keywords:['spray deck','pool','swimming'], answer:'Spray Deck is perfect for pools and patios. Non-slip, resistant to heat and humidity. Very popular in Houston TX.' },
+    { keywords:['stamp','overlay','stone','cobblestone','pattern'], answer:'Stamp Overlay mimics stone, brick, cobblestone or wood. Ideal for driveways, patios and gathering areas. Fully customizable.' },
+    { keywords:['power wash','pressure','clean','wash'], answer:'Yes, we do professional Power Wash for driveways, patios, fences and exterior surfaces. Also used as preparation before any coating.' },
+    { keywords:['fence','wood','stain','deck','tint'], answer:'We do Fence Stain and Wood Deck Stain. We protect and beautify wood fences and decks against sun, rain and heavy use in Texas.' },
+    { keywords:['phone','call','number','contact','jose','whatsapp'], answer:'You can call or WhatsApp us at (832) 768-5803. You talk directly with Jose Maldonado, owner of J&M Coatings.' },
+    { keywords:['hello','hi','hey'], answer:'Hello! I\'m the J&M Coatings assistant. I can help you with services, estimates, areas and contact info.' },
+    { keywords:['thank','thanks'], answer:'You\'re welcome! For direct attention call (832) 768-5803 or WhatsApp us.' }
+  ];
+  const FALLBACK_EN = 'For that question it\'s best to speak directly with Jose. Call (832) 768-5803 or WhatsApp us with the details.';
+  const FALLBACK_ES = 'Para esa pregunta es mejor hablar directo con Jose. Llama al (832) 768-5803 o escribe por WhatsApp y te ayudamos.';
+  const WELCOME_EN = 'Hi! I\'m the J&M Coatings assistant.\n\nI can answer questions about services, estimates, areas and contact. What do you need?';
+  const WELCOME_ES = 'Hola. Soy el asistente de J&M Coatings.\n\nPuedo responder sobre servicios, estimados, areas y contacto. \xbfQue necesitas?';
 
   let chatOpen = false, welcomeSent = false;
   function toggleChat() {
@@ -1513,15 +1528,29 @@
     document.getElementById('chat-icon-close').style.display = chatOpen ? 'block' : 'none';
     if (chatOpen) {
       document.getElementById('chatBadge').style.display = 'none';
-      if (!welcomeSent) { welcomeSent=true; setTimeout(()=>showTyping(()=>addBotMsg(WELCOME)), 400); }
+      if (!welcomeSent) {
+        welcomeSent = true;
+        const welcome = (window.jymCurrentLang === 'es') ? WELCOME_ES : WELCOME_EN;
+        setTimeout(()=>showTyping(()=>addBotMsg(welcome)), 400);
+      }
     }
   }
   function addBotMsg(t) { const m=document.getElementById('chatMessages'); const d=document.createElement('div'); d.className='msg msg-bot'; d.textContent=t; m.appendChild(d); m.scrollTop=m.scrollHeight; }
   function addUserMsg(t) { const m=document.getElementById('chatMessages'); const d=document.createElement('div'); d.className='msg msg-user'; d.textContent=t; m.appendChild(d); m.scrollTop=m.scrollHeight; }
   function showTyping(cb) { const m=document.getElementById('chatMessages'); const t=document.createElement('div'); t.className='typing-indicator'; t.id='typingIndicator'; t.innerHTML='<span></span><span></span><span></span>'; m.appendChild(t); m.scrollTop=m.scrollHeight; setTimeout(()=>{ const a=document.getElementById('typingIndicator'); if(a) a.remove(); cb(); }, 650+Math.random()*500); }
-  function getBotResponse(input) { const low=input.toLowerCase().trim(); for(const item of FAQ){ if(item.keywords.some(k=>low.includes(k))) return item.answer; } return FALLBACK; }
+  function getBotResponse(input) {
+    const low = input.toLowerCase().trim();
+    const faq = (window.jymCurrentLang === 'es') ? FAQ_ES : FAQ_EN;
+    const fallback = (window.jymCurrentLang === 'es') ? FALLBACK_ES : FALLBACK_EN;
+    for(const item of faq){ if(item.keywords.some(k=>low.includes(k))) return item.answer; }
+    return fallback;
+  }
   function sendMessage() { const input=document.getElementById('chatInput'); const t=input.value.trim(); if(!t) return; input.value=''; addUserMsg(t); showTyping(()=>addBotMsg(getBotResponse(t))); }
-  function sendQuick(source) { const t=typeof source==='string'?source:(source.dataset.questionEs||source.textContent.trim()); if(!chatOpen) toggleChat(); addUserMsg(t); showTyping(()=>addBotMsg(getBotResponse(t))); }
+  function sendQuick(source) {
+    const isEs = window.jymCurrentLang === 'es';
+    const t = typeof source==='string' ? source : (isEs ? (source.dataset.questionEs||source.textContent.trim()) : (source.dataset.questionEn||source.textContent.trim()));
+    if(!chatOpen) toggleChat(); addUserMsg(t); showTyping(()=>addBotMsg(getBotResponse(t)));
+  }
 </script>
 <script src="site-i18n.js"></script>
 <script src="site-mobile-taps.js"></script>

@@ -1,6 +1,6 @@
 (function () {
   const STORAGE_KEY = 'jymLang';
-  let currentLang = localStorage.getItem(STORAGE_KEY) || 'es';
+  let currentLang = localStorage.getItem(STORAGE_KEY) || 'en';
 
   // English FAQ answers for chat widget
   const FAQ_EN = [
@@ -48,8 +48,9 @@
 
     // Swap chat input placeholder
     const input = document.getElementById('chatInput');
-    if (input && input.dataset.placeholderEn) {
-      input.placeholder = lang === 'en' ? input.dataset.placeholderEn : (input._jymPlaceholderEs || input.placeholder);
+    if (input) {
+      if (lang === 'en' && input.dataset.placeholderEn) input.placeholder = input.dataset.placeholderEn;
+      if (lang === 'es' && input.dataset.placeholderEs) input.placeholder = input.dataset.placeholderEs;
     }
 
     // Swap typewriter phrases
@@ -76,10 +77,6 @@
       el._jymEs = el.innerHTML;
     });
 
-    // Cache chat input placeholder
-    const input = document.getElementById('chatInput');
-    if (input) input._jymPlaceholderEs = input.placeholder;
-
     // Cache typewriter phrases
     const tw = document.querySelector('[data-typewriter]');
     if (tw) tw._jymPhrasesEs = tw.dataset.phrases;
@@ -93,19 +90,6 @@
     }
 
     window.jymCurrentLang = currentLang;
-
-    // Patch getBotResponse to support English
-    const _origGetBotResponse = window.getBotResponse;
-    window.getBotResponse = function (input) {
-      if (window.jymCurrentLang === 'en') return getEnAnswer(input);
-      return _origGetBotResponse ? _origGetBotResponse(input) : getEnAnswer(input);
-    };
-
-    // Patch welcome message
-    const _origToggleChat = window.toggleChat;
-    window.toggleChat = function () {
-      _origToggleChat && _origToggleChat();
-    };
   }
 
   window.toggleLang = function () {
