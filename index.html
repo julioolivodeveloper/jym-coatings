@@ -292,6 +292,24 @@
     .footer-service-areas { display: flex; flex-wrap: wrap; gap: 8px; }
     .area-chip { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.75); padding: 6px 12px; border-radius: 50px; font-size: 0.76rem; border: 1px solid rgba(255,255,255,0.12); font-weight: 700; text-decoration: none; }
     .area-chip:hover { color: var(--orange-light); }
+
+    /* ── Map section ── */
+    #map-areas { padding: 5rem 0; background: var(--ink-950); }
+    #map-areas .section-title { color: white; }
+    #map-areas .section-title span { color: var(--orange-light); }
+    #map-areas .section-tag { background: rgba(255,255,255,0.1); color: var(--orange-light); }
+    #map-areas .section-desc { color: rgba(255,255,255,0.64); }
+    #map-areas .divider { background: linear-gradient(to right, var(--orange-light), var(--orange)); }
+    .map-frame-wrap { position: relative; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.45); margin-top: 2.5rem; border: 1px solid rgba(255,255,255,0.1); }
+    .map-frame-wrap iframe { width: 100%; height: 420px; display: block; border: 0; filter: saturate(0.85); }
+    .map-city-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.5rem; justify-content: center; }
+    .map-city-tag { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13); color: rgba(255,255,255,0.78); padding: 6px 14px; border-radius: 50px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.04em; display: flex; align-items: center; gap: 5px; }
+    .map-city-tag svg { width: 11px; height: 11px; flex-shrink: 0; color: var(--orange-light); }
+    .map-google-btn { display: inline-flex; align-items: center; gap: 10px; margin-top: 1.75rem; padding: 13px 28px; background: white; color: #1a1a1a; border-radius: 50px; font-weight: 800; font-size: 0.9rem; text-decoration: none; box-shadow: 0 4px 20px rgba(0,0,0,0.25); transition: transform 0.2s, box-shadow 0.2s; }
+    .map-google-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(0,0,0,0.35); }
+    .map-google-btn-wrap { text-align: center; }
+    @media (max-width: 600px) { .map-frame-wrap iframe { height: 280px; } }
+
     .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
     .footer-bottom p { font-size: 0.8rem; }
 
@@ -1286,6 +1304,42 @@
           </li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="map-areas">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag" data-en="Service area">Area de servicio</div>
+      <h2 class="section-title" data-en="We serve Houston TX <span>and the entire metro area</span>">Servimos Houston TX <span>y toda el área metropolitana</span></h2>
+      <div class="divider"></div>
+      <p class="section-desc" data-en="J&amp;M Coatings operates throughout Houston and surrounding cities. Free estimates anywhere in the service area.">J&M Coatings opera en todo Houston y ciudades del área. Estimados gratis en toda el área de servicio.</p>
+    </div>
+    <div class="map-frame-wrap reveal">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d443985.0862597!2d-95.76119!3d29.836095!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ca2480b9e1a2b23%3A0xa03248bd78f9af44!2sJ%26M%20coatings!5e0!3m2!1ses!2sus!4v1725400000000!5m2!1ses!2sus"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        title="J&M Coatings - Ubicación en Houston TX"></iframe>
+    </div>
+    <div class="map-city-tags reveal">
+      <div class="map-city-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg> Houston</div>
+      <div class="map-city-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg> Katy</div>
+      <div class="map-city-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg> Sugar Land</div>
+      <div class="map-city-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg> Pearland</div>
+      <div class="map-city-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg> Pasadena</div>
+      <div class="map-city-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg> The Woodlands</div>
+      <div class="map-city-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg> Kingwood</div>
+      <div class="map-city-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg> Friendswood</div>
+      <div class="map-city-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg> Missouri City</div>
+      <div class="map-city-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg> Cypress</div>
+      <div class="map-city-tag"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg> Stafford</div>
+    </div>
+    <div class="map-google-btn-wrap reveal">
+      <a href="https://maps.app.goo.gl/1x3KerujfUTBiEZQA" target="_blank" rel="noopener" class="map-google-btn">
+        <svg width="20" height="20" viewBox="0 0 48 48"><path fill="#4285F4" d="M43.6 20.5H24v7h11.3C33.8 32.8 29.4 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.1 8 3l5.2-5.2C34 7 29.3 5 24 5 13.5 5 5 13.5 5 24s8.5 19 19 19c10.9 0 18.5-7.7 18.5-18.5 0-1.2-.1-2-.4-4z"/><path fill="#34A853" d="M6.3 14.7l6.6 4.8C14.5 16 19 13 24 13c3.1 0 5.9 1.1 8 3l5.2-5.2C34 7 29.3 5 24 5c-7.7 0-14.3 4.1-17.7 9.7z"/><path fill="#FBBC05" d="M24 43c5.2 0 9.9-1.8 13.5-4.8l-6.2-5.2C29.4 34.8 26.9 36 24 36c-5.4 0-9.8-3.2-11.3-8.5l-6.5 5C9.7 38.9 16.4 43 24 43z"/><path fill="#EA4335" d="M43.6 20.5H24v7h11.3c-.8 2.3-2.3 4.2-4.3 5.5l6.2 5.2C40.9 34.7 43.5 30 43.5 24c0-1.2-.1-2-.4-4z"/></svg>
+        <span data-en="See us on Google Maps">Vernos en Google Maps</span>
+      </a>
     </div>
   </div>
 </section>
