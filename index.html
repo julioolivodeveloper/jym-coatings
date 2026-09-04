@@ -383,6 +383,38 @@
       .contact-open-button { width: 100%; }
     }
     @media (prefers-reduced-motion: reduce) { .typewriter-cursor { display: none; } }
+    /* ── Language toggle ────────────────────────────────── */
+    .lang-toggle {
+      border: 1.5px solid rgba(232,117,10,0.5);
+      border-radius: 50px;
+      background: #fff2e6;
+      color: var(--orange-dark);
+      min-height: 36px;
+      min-width: 82px;
+      padding: 7px 14px;
+      font: inherit;
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-align: center;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+    .lang-toggle:hover { background: var(--ink-800); color: white; transform: translateY(-1px); }
+
+    .nav-lang-mobile {
+      display: none;
+      align-items: center;
+      margin-left: auto;
+      margin-right: 0.45rem;
+    }
+    .nav-lang-mobile .lang-toggle { min-height: 38px; min-width: 80px; font-size: 0.74rem; }
+
+    @media (max-width: 768px) {
+      .nav-lang-mobile { display: inline-flex; }
+    }
+
 
     /* ── Portfolio ─────────────────────────────────── */
     #portfolio { padding: 6rem 0; background: var(--cream); }
@@ -573,17 +605,19 @@
   <a href="#" class="nav-logo" aria-label="J&M Coatings">
     <img src="media/logo.webp" alt="J&M Coatings" class="brand-image" width="170" height="60" />
   </a>
+  <div class="nav-lang-mobile"><button class="lang-toggle" onclick="toggleLang()" aria-label="Cambiar idioma">English</button></div>
   <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Abrir menu">
     <span></span><span></span><span></span>
   </button>
 </nav>
 <ul class="nav-links" id="navLinks">
-  <li><a href="#about">Nosotros</a></li>
-  <li><a href="#services">Servicios</a></li>
-  <li><a href="#portfolio">Portafolio</a></li>
-  <li><a href="#gallery">Galeria</a></li>
-  <li><a href="#why">Por que elegirnos</a></li>
-  <li><a href="#contact" class="nav-cta">Estimado Gratis</a></li>
+  <li><a href="#about" data-en="About Us">Nosotros</a></li>
+  <li><a href="#services" data-en="Services">Servicios</a></li>
+  <li><a href="#portfolio" data-en="Portfolio">Portafolio</a></li>
+  <li><a href="#gallery" data-en="Gallery">Galeria</a></li>
+  <li><a href="#why" data-en="Why Us">Por que elegirnos</a></li>
+  <li><a href="#contact" class="nav-cta" data-en="Free Estimate">Estimado Gratis</a></li>
+  <li><button class="lang-toggle" onclick="toggleLang()" aria-label="Cambiar idioma">English</button></li>
 </ul>
 <div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
 
@@ -600,32 +634,32 @@
   <div class="hero-content">
     <div class="hero-badge">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Houston, Sugar Land, Katy, Pearland y alrededores
+      <span data-en="Houston, Sugar Land, Katy, Pearland and surroundings">Houston, Sugar Land, Katy, Pearland y alrededores</span>
     </div>
 
     <h1 class="hero-title">
-      Transformamos tus pisos
+      <span data-en="We transform your floors">Transformamos tus pisos</span>
       <span class="typewriter-line">
-        <span data-typewriter data-phrases="con epoxy y diseños premium|con spray deck y stamp overlay|con acabados que duran anos|sobre concreto nuevo y existente">con epoxy y disenos premium</span><span class="typewriter-cursor" aria-hidden="true"></span>
+        <span data-typewriter data-phrases="con epoxy y diseños premium|con spray deck y stamp overlay|con acabados que duran anos|sobre concreto nuevo y existente" data-phrases-en="with epoxy &amp; premium finishes|with spray deck &amp; stamp overlay|with finishes that last years|on new &amp; existing concrete">con epoxy y disenos premium</span><span class="typewriter-cursor" aria-hidden="true"></span>
       </span>
     </h1>
 
     <div class="hero-subtitle hero-message">
       <p class="hero-message-brand">J&M Coatings</p>
-      <p class="hero-message-lead">Recubrimientos profesionales para tu hogar o negocio</p>
-      <p class="hero-message-question">iQuieres transformar tu garaje, patio, piscina o deck con un acabado de lujo?</p>
+      <p class="hero-message-lead" data-en="Professional coatings for your home or business">Recubrimientos profesionales para tu hogar o negocio</p>
+      <p class="hero-message-question" data-en="Want to transform your garage, patio, pool or deck with a luxury finish?">iQuieres transformar tu garaje, patio, piscina o deck con un acabado de lujo?</p>
       <ul class="hero-message-list">
         <li>Epoxy Flooring</li>
         <li>Spray Deck</li>
         <li>Stamp Overlay</li>
-        <li>Disenos sobre concreto</li>
+        <li data-en="Concrete Designs">Disenos sobre concreto</li>
         <li>Power Wash</li>
         <li>Fence &amp; Wood Deck Stain</li>
       </ul>
-      <p class="hero-message-alert">Estimados 100% gratis - sin compromiso.</p>
-      <p>Trabajamos sobre concreto nuevo y existente con acabados que realzan el valor de tu propiedad.</p>
-      <p class="hero-message-footer">Calidad garantizada. Trabajo profesional.</p>
-      <p class="hero-message-meta">Sirviendo a Houston TX y alrededores.</p>
+      <p class="hero-message-alert" data-en="100% free estimates - no commitment.">Estimados 100% gratis - sin compromiso.</p>
+      <p data-en="We work on new and existing concrete with finishes that enhance your property's value.">Trabajamos sobre concreto nuevo y existente con acabados que realzan el valor de tu propiedad.</p>
+      <p class="hero-message-footer" data-en="Guaranteed quality. Professional work.">Calidad garantizada. Trabajo profesional.</p>
+      <p class="hero-message-meta" data-en="Serving Houston TX and surrounding areas.">Sirviendo a Houston TX y alrededores.</p>
     </div>
 
     <div class="hero-buttons">
@@ -642,19 +676,19 @@
     <div class="hero-stats">
       <div>
         <div class="hero-stat-num"><span class="count-up" data-target="100">0</span>%</div>
-        <div class="hero-stat-label">Estimados gratis</div>
+        <div class="hero-stat-label" data-en="Free estimates">Estimados gratis</div>
       </div>
       <div>
         <div class="hero-stat-num"><span class="count-up" data-target="7">0</span>+</div>
-        <div class="hero-stat-label">Servicios disponibles</div>
+        <div class="hero-stat-label" data-en="Services available">Servicios disponibles</div>
       </div>
       <div>
         <div class="hero-stat-num">TX</div>
-        <div class="hero-stat-label">Houston &amp; area</div>
+        <div class="hero-stat-label" data-en="Houston &amp; area">Houston &amp; area</div>
       </div>
       <div>
         <div class="hero-stat-num"><span class="count-up" data-target="10">0</span>+</div>
-        <div class="hero-stat-label">Anos de experiencia</div>
+        <div class="hero-stat-label" data-en="Years of experience">Anos de experiencia</div>
       </div>
     </div>
   </div>
@@ -686,27 +720,27 @@
       </div>
 
       <div class="about-text reveal reveal-delay-2">
-        <div class="section-tag">Quienes somos</div>
-        <h2>Expertos en recubrimientos <span>para concreto en Houston</span></h2>
+        <div class="section-tag" data-en="About Us">Quienes somos</div>
+        <h2 data-en="Experts in coatings <span>for concrete in Houston</span>">Expertos en recubrimientos <span>para concreto en Houston</span></h2>
         <p>J&M Coatings es una empresa especializada en la transformacion de pisos y superficies de concreto. Aplicamos recubrimientos decorativos y de proteccion que embellecen y prolongan la vida util de tus espacios.</p>
-        <p>Trabajamos en garajes, patios, albercas, decks, entradas y cualquier superficie de concreto, tanto nuevo como existente. Nuestro objetivo es superar tus expectativas con trabajo de calidad y acabados que duran anos.</p>
+        <p data-en="We work on garages, patios, pools, decks, driveways and any concrete surface, both new and existing. Our goal is to exceed your expectations with quality work and finishes that last years.">Trabajamos en garajes, patios, albercas, decks, entradas y cualquier superficie de concreto, tanto nuevo como existente. Nuestro objetivo es superar tus expectativas con trabajo de calidad y acabados que duran anos.</p>
 
         <div class="about-features">
           <div class="about-feature">
             <div class="about-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-            Estimados gratis
+            <span data-en="Free estimates">Estimados gratis</span>
           </div>
           <div class="about-feature">
             <div class="about-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-            Concreto nuevo y existente
+            <span data-en="New &amp; existing concrete">Concreto nuevo y existente</span>
           </div>
           <div class="about-feature">
             <div class="about-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-            Acabados de lujo
+            <span data-en="Luxury finishes">Acabados de lujo</span>
           </div>
           <div class="about-feature">
             <div class="about-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg></div>
-            Houston TX y area
+            <span data-en="Houston TX &amp; area">Houston TX y area</span>
           </div>
         </div>
 
@@ -724,10 +758,10 @@
 <section id="services">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-tag">Nuestros servicios</div>
-      <h2 class="section-title">Recubrimientos y disenos <span>para cada superficie</span></h2>
+      <div class="section-tag" data-en="Our services">Nuestros servicios</div>
+      <h2 class="section-title" data-en="Coatings &amp; designs <span>for every surface</span>">Recubrimientos y disenos <span>para cada superficie</span></h2>
       <div class="divider"></div>
-      <p class="section-desc">Desde epoxy hasta stamp overlay y wood stain, tenemos la solucion perfecta para transformar y proteger cualquier superficie de tu propiedad. Estimados 100% gratis.</p>
+      <p class="section-desc" data-en="From epoxy to stamp overlay and wood stain, we have the perfect solution to transform and protect any surface on your property. 100% free estimates.">Desde epoxy hasta stamp overlay y wood stain, tenemos la solucion perfecta para transformar y proteger cualquier superficie de tu propiedad. Estimados 100% gratis.</p>
     </div>
 
     <div class="services-grid">
@@ -735,8 +769,8 @@
         <div class="service-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
         </div>
-        <h3>Disenos sobre Concreto</h3>
-        <p>Transformamos concreto nuevo y existente con disenos decorativos que dan vida y caracter a patios, garajes, entradas y areas exteriores.</p>
+        <h3 data-en="Concrete Designs">Disenos sobre Concreto</h3>
+        <p data-en="We transform new and existing concrete with decorative designs that bring life and character to patios, garages, driveways and outdoor areas.">Transformamos concreto nuevo y existente con disenos decorativos que dan vida y caracter a patios, garajes, entradas y areas exteriores.</p>
         <div class="service-tags">
           <span class="service-tag">Concreto nuevo</span>
           <span class="service-tag">Concreto existente</span>
@@ -748,8 +782,8 @@
         <div class="service-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 20h18"/><path d="M5 20V8l7-4 7 4v12"/><path d="M9 20v-6h6v6"/></svg>
         </div>
-        <h3>Spray Deck</h3>
-        <p>Recubrimiento texturizado ideal para albercas, patios y areas alrededor de la piscina. Antideslizante, duradero y resistente al calor y la humedad de Texas.</p>
+        <h3 data-en="Spray Deck">Spray Deck</h3>
+        <p data-en="Textured coating ideal for pools, patios and pool deck areas. Non-slip, durable and resistant to the Texas heat and humidity.">Recubrimiento texturizado ideal para albercas, patios y areas alrededor de la piscina. Antideslizante, duradero y resistente al calor y la humedad de Texas.</p>
         <div class="service-tags">
           <span class="service-tag">Albercas</span>
           <span class="service-tag">Antideslizante</span>
@@ -761,8 +795,8 @@
         <div class="service-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
         </div>
-        <h3>Stamp Overlay</h3>
-        <p>Acabados con texturas y patrones que imitan piedra, ladrillo, madera o adoquin. Ideal para entradas, patios y areas de reunion que quieren un look premium.</p>
+        <h3 data-en="Stamp Overlay">Stamp Overlay</h3>
+        <p data-en="Finishes with textures and patterns that mimic stone, brick, wood or cobblestone. Ideal for driveways, patios and gathering areas seeking a premium look.">Acabados con texturas y patrones que imitan piedra, ladrillo, madera o adoquin. Ideal para entradas, patios y areas de reunion que quieren un look premium.</p>
         <div class="service-tags">
           <span class="service-tag">Piedra</span>
           <span class="service-tag">Adoquin</span>
@@ -774,8 +808,8 @@
         <div class="service-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6"/><path d="M9 12h6"/><path d="M9 15h4"/></svg>
         </div>
-        <h3>Epoxy Flooring</h3>
-        <p>El recubrimiento mas solicitado para garajes, talleres y locales comerciales. Resistente a manchas, quimicos, aceites y muy facil de limpiar. Aspecto brillante y moderno.</p>
+        <h3 data-en="Epoxy Flooring">Epoxy Flooring</h3>
+        <p data-en="The most popular coating for garages, workshops and commercial spaces. Resistant to stains, chemicals and oils. Easy to clean, bright and modern look.">El recubrimiento mas solicitado para garajes, talleres y locales comerciales. Resistente a manchas, quimicos, aceites y muy facil de limpiar. Aspecto brillante y moderno.</p>
         <div class="service-tags">
           <span class="service-tag">Garajes</span>
           <span class="service-tag">Comercial</span>
@@ -787,8 +821,8 @@
         <div class="service-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v4"/><path d="M12 18v4"/><path d="M4.93 4.93l2.83 2.83"/><path d="M16.24 16.24l2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="M4.93 19.07l2.83-2.83"/><path d="M16.24 7.76l2.83-2.83"/></svg>
         </div>
-        <h3>Power Wash</h3>
-        <p>Limpieza a presion profesional para driveways, patios, techos, cercas y cualquier superficie exterior. Preparacion ideal antes de aplicar cualquier recubrimiento.</p>
+        <h3 data-en="Power Wash">Power Wash</h3>
+        <p data-en="Professional pressure cleaning for driveways, patios, roofs, fences and any exterior surface. Ideal preparation before applying any coating.">Limpieza a presion profesional para driveways, patios, techos, cercas y cualquier superficie exterior. Preparacion ideal antes de aplicar cualquier recubrimiento.</p>
         <div class="service-tags">
           <span class="service-tag">Driveway</span>
           <span class="service-tag">Techos</span>
@@ -800,8 +834,8 @@
         <div class="service-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 8C8 10 5.9 16.17 3.82 22"/><path d="M10.26 18a10.5 10.5 0 011.8-3.6C13 12.8 14.5 12 17 12"/><path d="M4 6l1 1"/><path d="M4 18l1-1"/></svg>
         </div>
-        <h3>Fence Stain</h3>
-        <p>Tinte y sellado profesional para cercas de madera y composito. Protege contra la intemperie, rayos UV y humedad. Devuelve el color y prolonga la vida de tu cerca.</p>
+        <h3 data-en="Fence Stain">Fence Stain</h3>
+        <p data-en="Professional staining and sealing for wood and composite fences. Protects against weather, UV rays and moisture. Restores color and extends the life of your fence.">Tinte y sellado profesional para cercas de madera y composito. Protege contra la intemperie, rayos UV y humedad. Devuelve el color y prolonga la vida de tu cerca.</p>
         <div class="service-tags">
           <span class="service-tag">Madera</span>
           <span class="service-tag">Proteccion UV</span>
@@ -813,8 +847,8 @@
         <div class="service-icon-wrap">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 22v-2l3-3 3 3 3-3 3 3 3-3v5"/><path d="M3 10h18"/><path d="M3 6h18"/></svg>
         </div>
-        <h3>Wood Deck Stain</h3>
-        <p>Tratamiento y tinte para decks de madera que protege, embellece y sella. Resistente a la lluvia, calor y uso continuo. Tu deck lucira como nuevo por mas tiempo.</p>
+        <h3 data-en="Wood Deck Stain">Wood Deck Stain</h3>
+        <p data-en="Treatment and stain for wood decks that protects, beautifies and seals. Resistant to rain, heat and continuous use. Your deck will look like new for longer.">Tratamiento y tinte para decks de madera que protege, embellece y sella. Resistente a la lluvia, calor y uso continuo. Tu deck lucira como nuevo por mas tiempo.</p>
         <div class="service-tags">
           <span class="service-tag">Decks</span>
           <span class="service-tag">Sellado</span>
@@ -828,10 +862,10 @@
 <section id="portfolio">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-tag">Proyectos destacados</div>
-      <h2 class="section-title">Trabajos que <span>hablan por si solos</span></h2>
+      <div class="section-tag" data-en="Featured projects">Proyectos destacados</div>
+      <h2 class="section-title" data-en="Work that <span>speaks for itself</span>">Trabajos que <span>hablan por si solos</span></h2>
       <div class="divider"></div>
-      <p class="section-desc">Cada proyecto es unico. Aqui compartimos tres transformaciones reales que muestran la calidad y el nivel de detalle que J&M Coatings entrega en cada trabajo.</p>
+      <p class="section-desc" data-en="Every project is unique. Here we share three real transformations that show the quality and attention to detail J&amp;M Coatings delivers in every job.">Cada proyecto es unico. Aqui compartimos tres transformaciones reales que muestran la calidad y el nivel de detalle que J&M Coatings entrega en cada trabajo.</p>
     </div>
 
     <div class="portfolio-grid">
@@ -844,12 +878,12 @@
         <div class="portfolio-body">
           <div class="portfolio-location">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Sugar Land, TX
+            <span data-en="Sugar Land, TX">Sugar Land, TX</span>
           </div>
-          <h3>Patio trasero con epoxy metalico</h3>
-          <p>Transformacion completa del patio trasero con epoxy de alta resistencia para exteriores. Se aplico base selladora, capa de color gris perla con flakes decorativos y capa final UV para proteger contra el sol y la lluvia. El cliente queria un espacio de reunion con acabado premium, y eso es exactamente lo que entregamos.</p>
+          <h3 data-en="Backyard patio with metallic epoxy">Patio trasero con epoxy metalico</h3>
+          <p data-en="Full transformation of the backyard patio with high-strength outdoor epoxy. A sealer base was applied, followed by a pearl gray color coat with decorative flakes and a UV topcoat to protect against sun and rain. The client wanted a premium gathering space, and that is exactly what we delivered.">Transformacion completa del patio trasero con epoxy de alta resistencia para exteriores. Se aplico base selladora, capa de color gris perla con flakes decorativos y capa final UV para proteger contra el sol y la lluvia. El cliente queria un espacio de reunion con acabado premium, y eso es exactamente lo que entregamos.</p>
           <ul class="portfolio-specs">
-            <li><span>Superficie</span> Concreto existente</li>
+            <li><span data-en="Surface">Superficie</span> <span data-en="Existing concrete">Concreto existente</span></li>
             <li><span>Area</span> ~480 sq ft</li>
             <li><span>Acabado</span> Epoxy con flakes</li>
           </ul>
@@ -868,12 +902,12 @@
         <div class="portfolio-body">
           <div class="portfolio-location">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Katy, TX
+            <span data-en="Katy, TX">Katy, TX</span>
           </div>
-          <h3>Patio y alberca con spray deck texturizado</h3>
-          <p>El concreto alrededor de la alberca estaba desgastado y peligrosamente resbaloso. Aplicamos spray deck con textura antideslizante en tono arena calida, completando el trabajo con sellador resistente al cloro y al intenso calor del verano en Texas. El resultado es un patio que luce nuevo y es seguro para toda la familia.</p>
+          <h3 data-en="Pool and patio with textured spray deck">Patio y alberca con spray deck texturizado</h3>
+          <p data-en="The concrete around the pool was worn and dangerously slippery. We applied spray deck with a non-slip texture in a warm sand tone, completing the job with a chlorine-resistant sealer built to withstand the intense Texas summer heat. The result is a patio that looks brand new and is safe for the whole family.">El concreto alrededor de la alberca estaba desgastado y peligrosamente resbaloso. Aplicamos spray deck con textura antideslizante en tono arena calida, completando el trabajo con sellador resistente al cloro y al intenso calor del verano en Texas. El resultado es un patio que luce nuevo y es seguro para toda la familia.</p>
           <ul class="portfolio-specs">
-            <li><span>Superficie</span> Concreto existente</li>
+            <li><span data-en="Surface">Superficie</span> <span data-en="Existing concrete">Concreto existente</span></li>
             <li><span>Area</span> ~620 sq ft</li>
             <li><span>Acabado</span> Spray deck antideslizante</li>
           </ul>
@@ -892,12 +926,12 @@
         <div class="portfolio-body">
           <div class="portfolio-location">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Pearland, TX
+            <span data-en="Pearland, TX">Pearland, TX</span>
           </div>
-          <h3>Entrada principal con stamp overlay patron adoquin</h3>
-          <p>La entrada de esta casa tenia un concreto simple y sin caracter. Aplicamos un overlay con patron de adoquin europeo en tono terracota, bordado con color chocolate oscuro para definicion. El driveway y el camino hacia la puerta quedaron completamente renovados sin necesidad de demolicion, a una fraccion del costo del adoquin real.</p>
+          <h3 data-en="Main driveway with cobblestone stamp overlay">Entrada principal con stamp overlay patron adoquin</h3>
+          <p data-en="The driveway of this home had plain, character-less concrete. We applied an overlay with a European cobblestone pattern in a terracotta tone, edged with a dark chocolate color for definition. The driveway and walkway were completely renewed without demolition, at a fraction of the cost of real cobblestone.">La entrada de esta casa tenia un concreto simple y sin caracter. Aplicamos un overlay con patron de adoquin europeo en tono terracota, bordado con color chocolate oscuro para definicion. El driveway y el camino hacia la puerta quedaron completamente renovados sin necesidad de demolicion, a una fraccion del costo del adoquin real.</p>
           <ul class="portfolio-specs">
-            <li><span>Superficie</span> Concreto existente</li>
+            <li><span data-en="Surface">Superficie</span> <span data-en="Existing concrete">Concreto existente</span></li>
             <li><span>Area</span> ~800 sq ft</li>
             <li><span>Acabado</span> Stamp overlay adoquin</li>
           </ul>
@@ -915,10 +949,10 @@
 <section id="gallery">
   <div class="container">
     <div class="section-header reveal">
-      <div class="section-tag">Nuestros trabajos</div>
-      <h2 class="section-title">Resultados reales, <span>pisos y superficies transformadas</span></h2>
+      <div class="section-tag" data-en="Our work">Nuestros trabajos</div>
+      <h2 class="section-title" data-en="Real results, <span>floors and surfaces transformed</span>">Resultados reales, <span>pisos y superficies transformadas</span></h2>
       <div class="divider"></div>
-      <p class="section-desc">Fotos reales de trabajos realizados por J&M Coatings en Houston TX y area metropolitana. Epoxy, spray deck, stamp overlay, power wash y mas.</p>
+      <p class="section-desc" data-en="Real photos of work done by J&amp;M Coatings in Houston TX and the metro area. Epoxy, spray deck, stamp overlay, power wash and more.">Fotos reales de trabajos realizados por J&M Coatings en Houston TX y area metropolitana. Epoxy, spray deck, stamp overlay, power wash y mas.</p>
     </div>
   </div>
 
@@ -995,38 +1029,38 @@
       </div>
 
       <div class="why-content reveal reveal-delay-2">
-        <div class="section-tag">Por que elegirnos</div>
-        <h2 class="section-title">Calidad, durabilidad y <span>acabados que impresionan</span></h2>
+        <div class="section-tag" data-en="Why choose us">Por que elegirnos</div>
+        <h2 class="section-title" data-en="Quality, durability and <span>finishes that impress</span>">Calidad, durabilidad y <span>acabados que impresionan</span></h2>
         <div class="divider" style="margin-left:0"></div>
-        <p class="section-desc" style="margin-left:0; text-align:left">Un buen recubrimiento no es solo estetico. Protege tu inversion, facilita la limpieza y aumenta el valor de tu propiedad. En J&M Coatings usamos materiales de primera y tecnicas probadas para garantizar resultados que duran.</p>
+        <p class="section-desc" style="margin-left:0; text-align:left" data-en="A good coating is not just aesthetic. It protects your investment, makes cleaning easier and increases your property value. At J&amp;M Coatings we use top-grade materials and proven techniques to guarantee lasting results.">Un buen recubrimiento no es solo estetico. Protege tu inversion, facilita la limpieza y aumenta el valor de tu propiedad. En J&M Coatings usamos materiales de primera y tecnicas probadas para garantizar resultados que duran.</p>
 
         <ul class="why-list">
           <li class="why-item">
             <div class="why-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
             <div class="why-item-text">
-              <h4>Estimados 100% gratis</h4>
-              <p>Sin compromiso. Evaluamos tu proyecto y te damos un precio claro antes de comenzar cualquier trabajo.</p>
+              <h4 data-en="100% free estimates">Estimados 100% gratis</h4>
+              <p data-en="No commitment. We evaluate your project and give you a clear price before starting any work.">Sin compromiso. Evaluamos tu proyecto y te damos un precio claro antes de comenzar cualquier trabajo.</p>
             </div>
           </li>
           <li class="why-item">
             <div class="why-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
             <div class="why-item-text">
-              <h4>Materiales de primera calidad</h4>
-              <p>Usamos productos profesionales de alta durabilidad resistentes al calor extremo de Texas, humedad y uso intenso.</p>
+              <h4 data-en="Top-quality materials">Materiales de primera calidad</h4>
+              <p data-en="We use professional, high-durability products resistant to extreme Texas heat, humidity and heavy use.">Usamos productos profesionales de alta durabilidad resistentes al calor extremo de Texas, humedad y uso intenso.</p>
             </div>
           </li>
           <li class="why-item">
             <div class="why-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
             <div class="why-item-text">
-              <h4>Entrega en tiempo y forma</h4>
-              <p>Respetamos los tiempos acordados y mantenemos tu espacio lo mas limpio posible durante y despues del trabajo.</p>
+              <h4 data-en="On-time delivery">Entrega en tiempo y forma</h4>
+              <p data-en="We respect agreed timelines and keep your space as clean as possible during and after the job.">Respetamos los tiempos acordados y mantenemos tu espacio lo mas limpio posible durante y despues del trabajo.</p>
             </div>
           </li>
           <li class="why-item">
             <div class="why-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.82 9.78a19.79 19.79 0 01-3.07-8.67A2 2 0 012.73 2h3a2 2 0 012 1.72"/></svg></div>
             <div class="why-item-text">
-              <h4>Atencion directa con Jose</h4>
-              <p>Hablas directo con el dueno del negocio. Llamanos al (832) 768-5803 y te asesoramos sin rodeos.</p>
+              <h4 data-en="Direct attention from Jose">Atencion directa con Jose</h4>
+              <p data-en="You talk directly with the business owner. Call us at (832) 768-5803 and we will advise you straight.">Hablas directo con el dueno del negocio. Llamanos al (832) 768-5803 y te asesoramos sin rodeos.</p>
             </div>
           </li>
         </ul>
@@ -1037,9 +1071,9 @@
 
 <section id="cta">
   <div class="container">
-    <h2 class="reveal">Transforma tu piso o superficie hoy</h2>
+    <h2 class="reveal" data-en="Transform your floor or surface today">Transforma tu piso o superficie hoy</h2>
     <p class="reveal reveal-delay-1">
-      <span class="cta-highlight">Estimado gratis</span>, sin compromiso. Llama ahora o envianos un mensaje y te respondemos rapido. J&M Coatings, tu empresa de recubrimientos de confianza en Houston TX.
+      <span class="cta-highlight" data-en="Free estimate">Estimado gratis</span><span data-en=", no commitment. Call now or send us a message and we will respond quickly. J&amp;M Coatings, your trusted coating company in Houston TX.">, sin compromiso. Llama ahora o envianos un mensaje y te respondemos rapido. J&M Coatings, tu empresa de recubrimientos de confianza en Houston TX.</span>
     </p>
     <div class="cta-buttons reveal reveal-delay-2">
       <a href="tel:+18327685803" class="btn-white">
@@ -1058,42 +1092,42 @@
   <div class="container">
     <div class="contact-grid">
       <div class="contact-info reveal">
-        <div class="section-tag">Contacto</div>
-        <h3>Pide tu estimado gratuito hoy</h3>
-        <p>Cuentanos tu proyecto: tipo de superficie, tamano aproximado y que resultado buscas. Jose te contacta rapido con opciones y precio.</p>
+        <div class="section-tag" data-en="Contact">Contacto</div>
+        <h3 data-en="Request your free estimate today">Pide tu estimado gratuito hoy</h3>
+        <p data-en="Tell us about your project: surface type, approximate size and desired result. Jose will contact you quickly with options and pricing.">Cuentanos tu proyecto: tipo de superficie, tamano aproximado y que resultado buscas. Jose te contacta rapido con opciones y precio.</p>
 
         <div class="contact-details">
           <div class="contact-detail">
             <div class="contact-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.82 9.78a19.79 19.79 0 01-3.07-8.67A2 2 0 012.73 2h3a2 2 0 012 1.72"/></svg></div>
             <div class="contact-detail-text">
-              <strong>Telefono</strong>
+              <strong data-en="Phone">Telefono</strong>
               <a href="tel:+18327685803">(832) 768-5803</a>
             </div>
           </div>
           <div class="contact-detail">
             <div class="contact-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
             <div class="contact-detail-text">
-              <strong>Correo</strong>
+              <strong data-en="Email">Correo</strong>
               <a href="mailto:jandmcoatingss@gmail.com">jandmcoatingss@gmail.com</a>
             </div>
           </div>
           <div class="contact-detail">
             <div class="contact-detail-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
             <div class="contact-detail-text">
-              <strong>Servicio en</strong>
-              <span>Houston, Sugar Land, Katy, Pearland, Pasadena, The Woodlands y mas</span>
+              <strong data-en="Service area">Servicio en</strong>
+              <span data-en="Houston, Sugar Land, Katy, Pearland, Pasadena, The Woodlands and more">Houston, Sugar Land, Katy, Pearland, Pasadena, The Woodlands y mas</span>
             </div>
           </div>
         </div>
       </div>
 
       <div class="contact-action-card reveal reveal-delay-2">
-        <span class="contact-card-label">Contacto directo</span>
-        <h4>Llamanos o envianos un WhatsApp</h4>
-        <p>Preferimos hablar directamente contigo. Llamanos o escribenos por WhatsApp al (832) 768-5803 y te damos atencion personalizada.</p>
-        <a class="contact-open-button" href="https://wa.me/18327685803?text=Hola%20J%26M%20Coatings%2C%20me%20interesa%20un%20estimado%20gratis%20para%20mi%20proyecto" target="_blank" rel="noopener">Escribir por WhatsApp</a>
-        <a class="contact-open-button" href="tel:+18327685803" style="background:var(--ink-700); margin-top:0.5rem">Llamar (832) 768-5803</a>
-        <span class="contact-support-line">Jose Maldonado - Dueno</span>
+        <span class="contact-card-label" data-en="Direct contact">Contacto directo</span>
+        <h4 data-en="Call us or send us a WhatsApp">Llamanos o envianos un WhatsApp</h4>
+        <p data-en="We prefer to speak directly with you. Call us or message us on WhatsApp at (832) 768-5803 and we will give you personalized attention.">Preferimos hablar directamente contigo. Llamanos o escribenos por WhatsApp al (832) 768-5803 y te damos atencion personalizada.</p>
+        <a class="contact-open-button" href="https://wa.me/18327685803?text=Hola%20J%26M%20Coatings%2C%20me%20interesa%20un%20estimado%20gratis%20para%20mi%20proyecto" target="_blank" rel="noopener" data-en="Write on WhatsApp">Escribir por WhatsApp</a>
+        <a class="contact-open-button" href="tel:+18327685803" style="background:var(--ink-700); margin-top:0.5rem" data-en="Call (832) 768-5803">Llamar (832) 768-5803</a>
+        <span class="contact-support-line" data-en="Jose Maldonado - Owner">Jose Maldonado - Dueno</span>
       </div>
     </div>
   </div>
@@ -1106,11 +1140,11 @@
         <a href="#" class="nav-logo" aria-label="J&M Coatings">
           <img src="media/logo.webp" alt="J&M Coatings" class="brand-image" width="170" height="60" loading="lazy" decoding="async" />
         </a>
-        <p>Recubrimientos profesionales para concreto, madera y exteriores en Houston TX. Epoxy, Spray Deck, Stamp Overlay, Power Wash, Fence Stain y Wood Deck Stain. Estimados gratis.</p>
+        <p data-en="Professional coatings for concrete, wood and exteriors in Houston TX. Epoxy, Spray Deck, Stamp Overlay, Power Wash, Fence Stain and Wood Deck Stain. Free estimates.">Recubrimientos profesionales para concreto, madera y exteriores en Houston TX. Epoxy, Spray Deck, Stamp Overlay, Power Wash, Fence Stain y Wood Deck Stain. Estimados gratis.</p>
       </div>
 
       <div class="footer-col">
-        <h5>Servicios</h5>
+        <h5 data-en="Services">Servicios</h5>
         <ul>
           <li><a href="#services">Disenos sobre Concreto</a></li>
           <li><a href="#services">Spray Deck</a></li>
@@ -1123,7 +1157,7 @@
       </div>
 
       <div class="footer-col">
-        <h5>Contacto</h5>
+        <h5 data-en="Contact">Contacto</h5>
         <ul>
           <li><a href="tel:+18327685803">(832) 768-5803</a></li>
           <li><a href="mailto:jandmcoatingss@gmail.com">jandmcoatingss@gmail.com</a></li>
@@ -1134,7 +1168,7 @@
       </div>
 
       <div class="footer-col">
-        <h5>Areas de servicio</h5>
+        <h5 data-en="Service areas">Areas de servicio</h5>
         <div class="footer-service-areas">
           <span class="area-chip">Houston</span>
           <span class="area-chip">Sugar Land</span>
@@ -1151,8 +1185,8 @@
     </div>
 
     <div class="footer-bottom">
-      <p>&copy; 2026 J&M Coatings. Todos los derechos reservados.</p>
-      <p>Epoxy, Spray Deck, Stamp Overlay | Houston TX</p>
+      <p data-en="&copy; 2026 J&amp;M Coatings. All rights reserved.">&copy; 2026 J&M Coatings. Todos los derechos reservados.</p>
+      <p data-en="Epoxy, Spray Deck, Stamp Overlay | Houston TX">Epoxy, Spray Deck, Stamp Overlay | Houston TX</p>
     </div>
   </div>
 </footer>
@@ -1164,7 +1198,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
       </div>
       <div class="chat-header-info">
-        <strong>Asistente J&M Coatings</strong>
+        <strong data-en="J&amp;M Coatings Assistant">Asistente J&M Coatings</strong>
         <span><span class="online-dot"></span> En linea ahora</span>
       </div>
       <button class="chat-close" onclick="toggleChat()" aria-label="Cerrar chat">
@@ -1183,7 +1217,7 @@
     </div>
 
     <div class="chat-input-row">
-      <input class="chat-input" id="chatInput" type="text" placeholder="Escribe tu pregunta..." onkeydown="if(event.key==='Enter') sendMessage()" />
+      <input class="chat-input" id="chatInput" type="text" placeholder="Escribe tu pregunta..." data-placeholder-en="Type your question..." onkeydown="if(event.key==='Enter') sendMessage()" />
       <button class="chat-send" onclick="sendMessage()" aria-label="Enviar">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       </button>
@@ -1295,6 +1329,7 @@
   function sendMessage() { const input=document.getElementById('chatInput'); const t=input.value.trim(); if(!t) return; input.value=''; addUserMsg(t); showTyping(()=>addBotMsg(getBotResponse(t))); }
   function sendQuick(source) { const t=typeof source==='string'?source:(source.dataset.questionEs||source.textContent.trim()); if(!chatOpen) toggleChat(); addUserMsg(t); showTyping(()=>addBotMsg(getBotResponse(t))); }
 </script>
+<script src="site-i18n.js"></script>
 <script src="site-mobile-taps.js"></script>
 <script src="site-typewriter.js"></script>
 </body>
