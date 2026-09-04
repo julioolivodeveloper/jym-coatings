@@ -383,6 +383,150 @@
       .contact-open-button { width: 100%; }
     }
     @media (prefers-reduced-motion: reduce) { .typewriter-cursor { display: none; } }
+
+    /* ── Portfolio ─────────────────────────────────── */
+    #portfolio { padding: 6rem 0; background: var(--cream); }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .portfolio-card {
+      background: var(--white);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 8px 32px rgba(13,15,20,0.07);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s;
+    }
+
+    .portfolio-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 60px rgba(13,15,20,0.14);
+    }
+
+    .portfolio-img-wrap {
+      position: relative;
+      overflow: hidden;
+      height: 240px;
+    }
+
+    .portfolio-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .portfolio-card:hover .portfolio-img-wrap img { transform: scale(1.06); }
+
+    .portfolio-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: var(--orange);
+      color: white;
+      font-size: 0.72rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 50px;
+      box-shadow: 0 4px 14px rgba(232,117,10,0.4);
+    }
+
+    .portfolio-body {
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      flex: 1;
+    }
+
+    .portfolio-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--orange-dark);
+      font-size: 0.76rem;
+      font-weight: 900;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .portfolio-location svg { width: 13px; height: 13px; }
+
+    .portfolio-body h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.22rem;
+      color: var(--ink-950);
+      line-height: 1.25;
+    }
+
+    .portfolio-body p {
+      color: var(--gray-600);
+      font-size: 0.9rem;
+      line-height: 1.75;
+      flex: 1;
+    }
+
+    .portfolio-specs {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem 1rem;
+      border-top: 1px solid var(--gray-200);
+      padding-top: 0.85rem;
+    }
+
+    .portfolio-specs li {
+      font-size: 0.82rem;
+      color: var(--text);
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .portfolio-specs li span {
+      font-size: 0.68rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--gray-600);
+    }
+
+    .portfolio-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 0.25rem;
+      background: var(--orange);
+      color: white;
+      text-decoration: none;
+      padding: 12px 22px;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 900;
+      transition: background 0.22s, transform 0.22s;
+      align-self: flex-start;
+    }
+
+    .portfolio-cta svg { width: 16px; height: 16px; }
+    .portfolio-cta:hover { background: var(--orange-dark); transform: translateX(3px); }
+
+    @media (max-width: 1024px) {
+      .portfolio-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .portfolio-img-wrap { height: 210px; }
+      .portfolio-specs { grid-template-columns: 1fr 1fr; }
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -436,6 +580,7 @@
 <ul class="nav-links" id="navLinks">
   <li><a href="#about">Nosotros</a></li>
   <li><a href="#services">Servicios</a></li>
+  <li><a href="#portfolio">Portafolio</a></li>
   <li><a href="#gallery">Galeria</a></li>
   <li><a href="#why">Por que elegirnos</a></li>
   <li><a href="#contact" class="nav-cta">Estimado Gratis</a></li>
@@ -676,6 +821,96 @@
           <span class="service-tag">Madera natural</span>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">Proyectos destacados</div>
+      <h2 class="section-title">Trabajos que <span>hablan por si solos</span></h2>
+      <div class="divider"></div>
+      <p class="section-desc">Cada proyecto es unico. Aqui compartimos tres transformaciones reales que muestran la calidad y el nivel de detalle que J&M Coatings entrega en cada trabajo.</p>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <div class="portfolio-card reveal reveal-delay-1">
+        <div class="portfolio-img-wrap">
+          <img src="media/photo-02.webp" alt="Epoxy flooring en garaje residencial Houston TX" loading="lazy" decoding="async" />
+          <div class="portfolio-badge">Epoxy Flooring</div>
+        </div>
+        <div class="portfolio-body">
+          <div class="portfolio-location">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Sugar Land, TX
+          </div>
+          <h3>Garaje residencial con epoxy metalico</h3>
+          <p>Transformacion completa de un garaje de dos carros con epoxy de alta resistencia. Se aplico base selladora, capa de color gris perla con flakes decorativos y capa final UV para mayor durabilidad. El cliente busco una apariencia similar a showroom, y eso es exactamente lo que entregamos.</p>
+          <ul class="portfolio-specs">
+            <li><span>Superficie</span> Concreto existente</li>
+            <li><span>Area</span> ~480 sq ft</li>
+            <li><span>Acabado</span> Epoxy con flakes</li>
+            <li><span>Duracion</span> 2 dias</li>
+          </ul>
+          <a href="tel:+18327685803" class="portfolio-cta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.82 9.78a19.79 19.79 0 01-3.07-8.67A2 2 0 012.73 2h3a2 2 0 012 1.72"/></svg>
+            Quiero algo similar
+          </a>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal reveal-delay-2">
+        <div class="portfolio-img-wrap">
+          <img src="media/photo-06.webp" alt="Spray deck en area de alberca Katy TX" loading="lazy" decoding="async" />
+          <div class="portfolio-badge">Spray Deck</div>
+        </div>
+        <div class="portfolio-body">
+          <div class="portfolio-location">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Katy, TX
+          </div>
+          <h3>Patio y alberca con spray deck texturizado</h3>
+          <p>El concreto alrededor de la alberca estaba desgastado y peligrosamente resbaloso. Aplicamos spray deck con textura antideslizante en tono arena calida, completando el trabajo con sellador resistente al cloro y al intenso calor del verano en Texas. El resultado es un patio que luce nuevo y es seguro para toda la familia.</p>
+          <ul class="portfolio-specs">
+            <li><span>Superficie</span> Concreto existente</li>
+            <li><span>Area</span> ~620 sq ft</li>
+            <li><span>Acabado</span> Spray deck antideslizante</li>
+            <li><span>Duracion</span> 3 dias</li>
+          </ul>
+          <a href="tel:+18327685803" class="portfolio-cta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.82 9.78a19.79 19.79 0 01-3.07-8.67A2 2 0 012.73 2h3a2 2 0 012 1.72"/></svg>
+            Quiero algo similar
+          </a>
+        </div>
+      </div>
+
+      <div class="portfolio-card reveal reveal-delay-3">
+        <div class="portfolio-img-wrap">
+          <img src="media/photo-14.webp" alt="Stamp overlay en entrada de casa Pearland TX" loading="lazy" decoding="async" />
+          <div class="portfolio-badge">Stamp Overlay</div>
+        </div>
+        <div class="portfolio-body">
+          <div class="portfolio-location">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Pearland, TX
+          </div>
+          <h3>Entrada principal con stamp overlay patron adoquin</h3>
+          <p>La entrada de esta casa tenia un concreto simple y sin caracter. Aplicamos un overlay con patron de adoquin europeo en tono terracota, bordado con color chocolate oscuro para definicion. El driveway y el camino hacia la puerta quedaron completamente renovados sin necesidad de demolicion, a una fraccion del costo del adoquin real.</p>
+          <ul class="portfolio-specs">
+            <li><span>Superficie</span> Concreto existente</li>
+            <li><span>Area</span> ~800 sq ft</li>
+            <li><span>Acabado</span> Stamp overlay adoquin</li>
+            <li><span>Duracion</span> 4 dias</li>
+          </ul>
+          <a href="tel:+18327685803" class="portfolio-cta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.82 9.78a19.79 19.79 0 01-3.07-8.67A2 2 0 012.73 2h3a2 2 0 012 1.72"/></svg>
+            Quiero algo similar
+          </a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
