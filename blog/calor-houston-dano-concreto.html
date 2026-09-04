@@ -283,11 +283,6 @@
     if(_c) _c();
     document.querySelectorAll('.has-dropdown.drop-open').forEach(function(d){ d.classList.remove('drop-open'); });
   };
-  document.querySelectorAll('.dropdown-toggle').forEach(function(t){
-    t.addEventListener('click', function(e){
-      e.preventDefault(); e.stopPropagation(); t.closest('.has-dropdown').classList.toggle('drop-open');
-    });
-  });
   document.addEventListener('click', function(e){
     if(!e.target.closest('.has-dropdown')) document.querySelectorAll('.has-dropdown.drop-open').forEach(function(d){ d.classList.remove('drop-open'); });
   });
