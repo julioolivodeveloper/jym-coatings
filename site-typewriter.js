@@ -6,35 +6,38 @@
   const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
   async function typeLoop(target) {
-    const phrases = (target.dataset.phrases || target.textContent)
-      .split('|')
-      .map(phrase => phrase.trim())
-      .filter(Boolean);
-
-    if (!phrases.length) return;
     if (reduceMotion) {
-      target.textContent = phrases[0];
+      const phrases = (target.dataset.phrases || target.textContent).split('|').map(p => p.trim()).filter(Boolean);
+      target.textContent = phrases[0] || '';
       return;
     }
 
     let phraseIndex = 0;
     while (true) {
+      // Lee data-phrases en cada ciclo para respetar cambios de idioma
+      const phrases = (target.dataset.phrases || target.textContent)
+        .split('|')
+        .map(p => p.trim())
+        .filter(Boolean);
+
+      if (!phrases.length) { await wait(500); continue; }
+
       const phrase = phrases[phraseIndex % phrases.length];
 
-      for (let i = 0; i <= phrase.length; i += 1) {
+      for (let i = 0; i <= phrase.length; i++) {
         target.textContent = phrase.slice(0, i);
         await wait(42);
       }
 
       await wait(1500);
 
-      for (let i = phrase.length; i >= 0; i -= 1) {
+      for (let i = phrase.length; i >= 0; i--) {
         target.textContent = phrase.slice(0, i);
         await wait(24);
       }
 
       await wait(260);
-      phraseIndex += 1;
+      phraseIndex++;
     }
   }
 
