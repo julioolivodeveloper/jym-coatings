@@ -1516,8 +1516,8 @@
 </script>
 <script src="site-i18n.js"></script>
 <script src="site-mobile-taps.js"></script>
-<script src="site-typewriter.js">
-  // ── Video Carousel ──
+<script src="site-typewriter.js"></script>
+<script>
   (function(){
     var vIdx = 0;
     var V_TOTAL = 12;
@@ -1527,10 +1527,12 @@
 
     function vGetSlideW(){
       var clip = document.querySelector('.vid-track-clip');
-      if(!clip || !clip.offsetWidth) return 300;
+      if(!clip) return 300;
+      var w = clip.getBoundingClientRect().width;
+      if(!w) return 300;
       var pv = vPerView();
-      var gap = 16; // 1rem gap
-      return Math.floor((clip.offsetWidth - gap * (pv - 1)) / pv);
+      var gap = 16;
+      return Math.floor((w - gap * (pv - 1)) / pv);
     }
 
     function vSetSizes(){
@@ -1571,10 +1573,9 @@
 
     window.vMove = function(dir){ vGo(vIdx + dir); };
 
-    // Touch swipe
-    var tx0 = 0;
     var clip = document.querySelector('.vid-track-clip');
     if(clip){
+      var tx0 = 0;
       clip.addEventListener('touchstart', function(e){ tx0 = e.touches[0].clientX; }, {passive:true});
       clip.addEventListener('touchend', function(e){
         var dx = e.changedTouches[0].clientX - tx0;
@@ -1588,7 +1589,6 @@
       vGo(0);
     }
 
-    // Espera a que el layout esté listo
     if(document.readyState === 'complete'){
       vInit();
     } else {
