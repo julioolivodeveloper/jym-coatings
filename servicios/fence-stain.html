@@ -56,9 +56,11 @@
     /* Hero */
     .srv-hero {
       min-height: 72vh; display: flex; align-items: center;
-      background: linear-gradient(135deg, var(--ink-950) 0%, var(--ink-700) 60%, #3a1a00 100%);
+      background: var(--ink-950);
       padding: 9rem 2rem 5rem; position: relative; overflow: hidden;
     }
+    .srv-hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: 0.38; }
+    .srv-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(13,15,20,0.93) 0%, rgba(13,15,20,0.72) 55%, rgba(58,26,0,0.88) 100%); }
     .srv-hero-content { max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 2; }
     .srv-breadcrumb { display: flex; align-items: center; gap: 8px; margin-bottom: 1.5rem; }
     .srv-breadcrumb a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.82rem; font-weight: 700; transition: color 0.2s; }
@@ -205,6 +207,8 @@
 <div class="menu-overlay" id="menuOverlay" onclick="closeMenu()"></div>
 
 <section class="srv-hero">
+  <div class="srv-hero-bg" style="background-image:url('../media/svc-fence-01.webp')"></div>
+  <div class="srv-hero-overlay"></div>
   <div class="srv-hero-deco"></div>
   <div class="srv-hero-content">
     <div class="srv-breadcrumb">
