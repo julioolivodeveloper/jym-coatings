@@ -340,6 +340,27 @@
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
 
+
+    /* ── Video Carousel ── */
+    #videos { padding: 5rem 0 4rem; background: var(--ink-950); }
+    #videos .section-tag { background: rgba(232,117,10,0.15); color: #ffc87a; border: 1px solid rgba(232,117,10,0.35); }
+    #videos .section-title { color: white; }
+    #videos .divider { background: linear-gradient(to right, var(--orange), var(--orange-light)); }
+    #videos .section-desc { color: rgba(255,255,255,0.68); }
+    .vid-carousel-outer { position: relative; margin-top: 2.5rem; padding: 0 52px; }
+    .vid-track-clip { overflow: hidden; border-radius: 12px; }
+    .vid-track { display: flex; gap: 1rem; transition: transform 0.48s cubic-bezier(0.22,1,0.36,1); will-change: transform; }
+    .vid-slide { flex: 0 0 calc(33.333% - 0.667rem); aspect-ratio: 9/16; border-radius: 12px; overflow: hidden; background: var(--ink-800); position: relative; }
+    .vid-slide iframe { width: 100%; height: 100%; border: none; display: block; }
+    .vid-arrow-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.18); color: white; font-size: 1.7rem; cursor: pointer; display: grid; place-items: center; transition: all 0.22s; z-index: 10; padding: 0; line-height: 1; }
+    .vid-arrow-btn:hover:not(:disabled) { background: var(--orange); border-color: var(--orange); }
+    .vid-arrow-btn:disabled { opacity: 0.25; cursor: default; }
+    .vid-arrow-btn.v-prev { left: 0; }
+    .vid-arrow-btn.v-next { right: 0; }
+    .vid-dots-row { display: flex; justify-content: center; gap: 8px; margin-top: 1.75rem; flex-wrap: wrap; }
+    .vid-dot-btn { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.22); border: none; cursor: pointer; padding: 0; transition: all 0.22s; }
+    .vid-dot-btn.on { background: var(--orange); transform: scale(1.35); }
+
     @media (max-width: 1024px) {
       .services-grid { grid-template-columns: repeat(2,1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -376,6 +397,8 @@
       .brand-image { width: 118px; height: 48px; }
       .hero-content { padding: 6rem 1.25rem 3.2rem; }
       .hero-title { font-size: 1.85rem; margin-bottom: 0.85rem; }
+      .vid-slide { flex: 0 0 100%; }
+      .vid-carousel-outer { padding: 0 40px; }
       .hero-buttons { gap: 0.6rem; }
       .btn-primary, .btn-secondary, .btn-white, .btn-outline-white { width: 100%; min-height: 48px; padding-top: 12px; padding-bottom: 12px; padding-left: 22px; padding-right: 22px; font-size: 0.94rem; }
       .hero-stat-num { font-size: 2.1rem; }
@@ -614,6 +637,7 @@
   <li><a href="#about" data-en="About Us">Nosotros</a></li>
   <li><a href="#services" data-en="Services">Servicios</a></li>
   <li><a href="#portfolio" data-en="Portfolio">Portafolio</a></li>
+  <li><a href="#videos" data-en="Videos">Videos</a></li>
   <li><a href="#gallery" data-en="Gallery">Galeria</a></li>
   <li><a href="#why" data-en="Why Us">Por que elegirnos</a></li>
   <li><a href="#contact" class="nav-cta" data-en="Free Estimate">Estimado Gratis</a></li>
@@ -942,6 +966,62 @@
       </div>
 
     </div>
+  </div>
+</section>
+
+<section id="videos">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag" data-en="Real work videos">Videos de trabajos reales</div>
+      <h2 class="section-title" data-en="Watch us <span>in action</span>">Miranos <span>en accion</span></h2>
+      <div class="divider"></div>
+      <p class="section-desc" data-en="Real videos of J&M Coatings projects in Houston TX and the metro area.">Videos reales de proyectos de J&M Coatings en Houston TX y area metropolitana.</p>
+    </div>
+    <div class="vid-carousel-outer">
+      <button class="vid-arrow-btn v-prev" id="vPrev" onclick="vMove(-1)" aria-label="Anterior" disabled>&#8249;</button>
+      <div class="vid-track-clip">
+        <div class="vid-track" id="vTrack">
+        <div class="vid-slide">
+          <iframe data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1586621763252920&show_text=false&width=267" title="Stamp overlay en patio" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" scrolling="no"></iframe>
+        </div>
+        <div class="vid-slide">
+          <iframe data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F916133080858994&show_text=false&width=267" title="Recubrimiento de concreto" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" scrolling="no"></iframe>
+        </div>
+        <div class="vid-slide">
+          <iframe data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1061024363531270&show_text=false&width=267" title="Trabajo J&M Coatings" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" scrolling="no"></iframe>
+        </div>
+        <div class="vid-slide">
+          <iframe data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2122100425051469&show_text=false&width=267" title="Epoxy flooring" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" scrolling="no"></iframe>
+        </div>
+        <div class="vid-slide">
+          <iframe data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1018334807470894&show_text=false&width=267" title="Spray deck alberca" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" scrolling="no"></iframe>
+        </div>
+        <div class="vid-slide">
+          <iframe data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1714209133153103&show_text=false&width=267" title="Stamp overlay entrada" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" scrolling="no"></iframe>
+        </div>
+        <div class="vid-slide">
+          <iframe data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F26894362956914908&show_text=false&width=267" title="Recubrimiento decorativo" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" scrolling="no"></iframe>
+        </div>
+        <div class="vid-slide">
+          <iframe data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Ffb.watch%2FJqIQHwgOCG%2F&show_text=false&width=267" title="Trabajo J&M Coatings" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" scrolling="no"></iframe>
+        </div>
+        <div class="vid-slide">
+          <iframe data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F3918849324921824&show_text=false&width=267" title="Concreto decorativo" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" scrolling="no"></iframe>
+        </div>
+        <div class="vid-slide">
+          <iframe data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F881183351665964&show_text=false&width=267" title="Power wash y recubrimiento" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" scrolling="no"></iframe>
+        </div>
+        <div class="vid-slide">
+          <iframe data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1643015183513488&show_text=false&width=267" title="Stamp overlay patio" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" scrolling="no"></iframe>
+        </div>
+        <div class="vid-slide">
+          <iframe data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F958981719831951&show_text=false&width=267" title="Epoxy y diseño concreto" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" scrolling="no"></iframe>
+        </div>
+        </div>
+      </div>
+      <button class="vid-arrow-btn v-next" id="vNext" onclick="vMove(1)" aria-label="Siguiente">&#8250;</button>
+    </div>
+    <div class="vid-dots-row" id="vDots"></div>
   </div>
 </section>
 
@@ -1346,6 +1426,74 @@
 </script>
 <script src="site-i18n.js"></script>
 <script src="site-mobile-taps.js"></script>
-<script src="site-typewriter.js"></script>
+<script src="site-typewriter.js">
+  // ── Video Carousel ──
+  (function(){
+    var vIdx = 0;
+    var V_TOTAL = 12;
+    function vPerView(){ return window.innerWidth < 768 ? 1 : 3; }
+    function vMaxIdx(){ return V_TOTAL - vPerView(); }
+
+    function vBuildDots(){
+      var dots = document.getElementById('vDots');
+      if(!dots) return;
+      dots.innerHTML = '';
+      for(var i = 0; i <= vMaxIdx(); i++){
+        var d = document.createElement('button');
+        d.className = 'vid-dot-btn' + (i === vIdx ? ' on' : '');
+        d.setAttribute('aria-label', 'Video ' + (i+1));
+        (function(idx){ d.onclick = function(){ vGo(idx); }; })(i);
+        dots.appendChild(d);
+      }
+    }
+
+    function vLoadNearby(idx){
+      var pv = vPerView();
+      document.querySelectorAll('#vTrack .vid-slide iframe').forEach(function(ifr, i){
+        if(i >= idx - 1 && i <= idx + pv && !ifr.src && ifr.dataset.src){
+          ifr.src = ifr.dataset.src;
+        }
+      });
+    }
+
+    function vGo(idx){
+      vIdx = Math.max(0, Math.min(idx, vMaxIdx()));
+      var track = document.getElementById('vTrack');
+      if(!track) return;
+      var slide = track.querySelector('.vid-slide');
+      if(!slide) return;
+      var gap = parseFloat(getComputedStyle(track).gap) || 16;
+      track.style.transform = 'translateX(-' + (vIdx * (slide.offsetWidth + gap)) + 'px)';
+      document.querySelectorAll('.vid-dot-btn').forEach(function(d,i){ d.classList.toggle('on', i===vIdx); });
+      var prev = document.getElementById('vPrev');
+      var next = document.getElementById('vNext');
+      if(prev) prev.disabled = vIdx === 0;
+      if(next) next.disabled = vIdx >= vMaxIdx();
+      vLoadNearby(vIdx);
+    }
+
+    window.vMove = function(dir){ vGo(vIdx + dir); };
+
+    // Touch swipe
+    var tx0 = 0;
+    var clip = document.querySelector('.vid-track-clip');
+    if(clip){
+      clip.addEventListener('touchstart', function(e){ tx0 = e.touches[0].clientX; }, {passive:true});
+      clip.addEventListener('touchend', function(e){
+        var dx = e.changedTouches[0].clientX - tx0;
+        if(Math.abs(dx) > 50) vMove(dx < 0 ? 1 : -1);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', function(){
+      vBuildDots();
+      vGo(0);
+    });
+    window.addEventListener('resize', function(){
+      vBuildDots();
+      vGo(Math.min(vIdx, vMaxIdx()));
+    });
+  })();
+</script>
 </body>
 </html>
