@@ -226,6 +226,10 @@
     .gallery-item-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,15,20,0.78), transparent); opacity: 0; transition: opacity 0.25s; display: flex; align-items: flex-end; padding: 1rem; }
     .gallery-item:hover .gallery-item-overlay { opacity: 1; }
     .gallery-item-overlay span { color: white; font-weight: 800; font-size: 0.85rem; }
+    .gallery-arrows { display: none; justify-content: center; gap: 1.25rem; margin-top: 1.5rem; padding: 0 1.25rem; }
+    .gallery-arrow { width: 52px; height: 52px; border-radius: 50%; background: rgba(232,117,10,0.9); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(232,117,10,0.44); transition: background 0.18s, transform 0.15s; -webkit-tap-highlight-color: transparent; flex-shrink: 0; }
+    .gallery-arrow:active { background: #c45c00; transform: scale(0.91); }
+    .gallery-arrow svg { width: 24px; height: 24px; pointer-events: none; }
     body.gallery-lightbox-open { overflow: hidden; }
     body.gallery-lightbox-open .gallery-track { animation-play-state: paused; }
     .gallery-lightbox { position: fixed; inset: 0; z-index: 2500; display: none; align-items: center; justify-content: center; padding: clamp(1rem,4vw,3rem); background: rgba(5,8,12,0.88); backdrop-filter: blur(10px); opacity: 0; pointer-events: none; transition: opacity 0.25s ease; }
@@ -397,6 +401,12 @@
       .menu-overlay { display: none; position: fixed; inset: 0; z-index: 1100; background: rgba(0,0,0,0.5); }
       .menu-overlay.open { display: block; }
       body.menu-open .gallery-track, body.menu-open .gallery-track-2, body.menu-open .hero-slide { animation: none !important; will-change: auto !important; transform: none !important; }
+      .gallery-track-wrapper { overflow-x: scroll !important; overflow-y: hidden; scrollbar-width: none; -ms-overflow-style: none; }
+      .gallery-track-wrapper::-webkit-scrollbar { display: none; }
+      .gallery-track-wrapper::before, .gallery-track-wrapper::after { display: none !important; }
+      .gallery-track, .gallery-track-2 { animation: none !important; }
+      .gallery-item { width: 80vw !important; height: 240px; scroll-snap-align: start; }
+      .gallery-arrows { display: flex; }
       .nav-links.open { display: flex !important; flex-direction: column; position: fixed; top: 76px; left: 0; right: 0; height: auto !important; z-index: 1200; background: white; border-top: 1px solid rgba(232,117,10,0.14); box-shadow: 0 18px 45px rgba(13,15,20,0.14); padding: 2rem; gap: 1.35rem; align-items: center; transform: translateZ(0); }
       .nav-links.open a { display: block; width: 100%; padding: 10px 24px; text-align: center; color: var(--ink-800); }
       .nav-links.open .nav-cta { color: white !important; }
@@ -1228,6 +1238,14 @@
       <div class="gallery-item"><img src="media/photo-18-thumb.webp" alt="Cerca tratada con stain" loading="lazy" decoding="async"/><div class="gallery-item-overlay"><span>Fence Stain</span></div></div>
     </div>
   </div>
+  <div class="gallery-arrows" id="galleryArrows">
+    <button class="gallery-arrow" id="galleryPrev" type="button" aria-label="Foto anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15,18 9,12 15,6"/></svg>
+    </button>
+    <button class="gallery-arrow" id="galleryNext" type="button" aria-label="Siguiente foto">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,18 15,12 9,6"/></svg>
+    </button>
+  </div>
 </section>
 
 <div class="gallery-lightbox" id="galleryLightbox" role="dialog" aria-modal="true" aria-label="Imagen expandida" aria-hidden="true">
@@ -1713,6 +1731,60 @@
       vGo(Math.min(vIdx, vMaxIdx()));
     });
   })();
+</script>
+<script>
+(function(){
+  if(window.innerWidth > 768) return;
+  var wrappers = document.querySelectorAll('.gallery-track-wrapper');
+  var autoTimer = null;
+
+  function getItemW(){
+    var item = document.querySelector('.gallery-item');
+    return item ? item.offsetWidth + 20 : 280;
+  }
+
+  function scrollNext(w){
+    var iw = getItemW();
+    var max = w.scrollWidth - w.clientWidth;
+    if(w.scrollLeft + iw >= max - iw/2){
+      w.scrollTo({left: 0});
+    } else {
+      w.scrollBy({left: iw, behavior:'smooth'});
+    }
+  }
+
+  function scrollPrev(w){
+    var iw = getItemW();
+    if(w.scrollLeft <= iw/2){
+      w.scrollTo({left: w.scrollWidth - w.clientWidth});
+    } else {
+      w.scrollBy({left: -iw, behavior:'smooth'});
+    }
+  }
+
+  function startAuto(){
+    clearInterval(autoTimer);
+    autoTimer = setInterval(function(){
+      wrappers.forEach(scrollNext);
+    }, 2500);
+  }
+
+  function pauseAuto(ms){
+    clearInterval(autoTimer);
+    setTimeout(startAuto, ms || 4000);
+  }
+
+  startAuto();
+
+  var prevBtn = document.getElementById('galleryPrev');
+  var nextBtn = document.getElementById('galleryNext');
+  if(prevBtn) prevBtn.addEventListener('click', function(){ pauseAuto(4000); wrappers.forEach(scrollPrev); });
+  if(nextBtn) nextBtn.addEventListener('click', function(){ pauseAuto(4000); wrappers.forEach(scrollNext); });
+
+  wrappers.forEach(function(w){
+    w.addEventListener('touchstart', function(){ pauseAuto(5000); }, {passive:true});
+  });
+})();
 </script>
 <script>
 (function(){
